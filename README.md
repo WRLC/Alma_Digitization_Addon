@@ -2,7 +2,7 @@
 This project provides an [ILLiad Client Addon](https://atlas-sys.atlassian.net/wiki/spaces/ILLiadAddons/pages/3149440/Client+Addons) to submit a digitization request to an institution's Alma using the Users API.
 
 ## Addon Architecture
-ILLiad client addons use the lua scripting language to embed forms and other functional widgets to the ILLiad client user interface. This addon creates a form that is prepopulated with the ILLiad digitization request data (e.g. article title, author). Item identifier fields must be entered on the ILLiad form by the person doing the processing by looking the item up in Alma.  Using the Physical Items search is the easiest way, as both the MMS ID and Item ID show up on the record display.
+ILLiad client addons use the lua scripting language to embed forms and other functional widgets in the ILLiad client user interface. This addon creates a form that is prepopulated with the ILLiad digitization request data (e.g. article title, author). Item identifier fields must be entered on the ILLiad form by the person doing the processing by looking the item up in Alma.  Using the Physical Items search is the easiest way, as both the MMS ID and Item ID show up on the record display.
 
 Submitting the form posts the fields to a PHP application running on a web server. This app will create and post a call to the users/requests API to create the request in the institution's IZ.
 
@@ -27,13 +27,13 @@ Addon settings are configured in the ILLiad Client Manage Addons form.
 ## Web Setup Instructions
 
 Clone this repository to your web server:
-
+```
    git clone git@github.com:WRLC/Alma_Digitization_Addon.git
-
+```
 Navigate to the `www/utils` directory copy the example configuration file to `config.php` and edit the `$izSettings` array for the IZs supported for your web server:
-
+```
    cd www/utils
    cp config.php.example config.php
    vi config.php
-
+```
 Configure a named virtual host in your web server to serve up PHP files from the `Alma_Digitization_Addon/www` directory. The resulting URL for that directory is the SubmissionURL setting for the ILLiad client addon.
