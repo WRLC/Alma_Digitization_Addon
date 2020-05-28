@@ -1,0 +1,18 @@
+<?php
+# settings for each Institution Zone
+$izSettings = array (
+    # indexed by Alma Institution Code
+    '01WRLC_EXONE' => array (
+        'name' => 'Example University One',
+        'apikey' => 'l8xx0123456789abcdeffedcba9876543210',
+    ),
+    '01WRLC_EXTWO' => array (
+        'name' => 'Example University TWO',
+        'apikey' => 'l8xx0123456789abcdeffedcba9876543210',
+    ),
+);
+
+$apiSettings = array (
+    'defaultURL' => 'https://api-na.hosted.exlibrisgroup.com/',
+);
+?>

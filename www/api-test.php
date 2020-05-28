@@ -1,8 +1,9 @@
 <?php
-	require 'utils/utils.php';
+	require_once 'utils/config.php';
+	require_once 'utils/utils.php';
 	
 	$instCode = $_GET["instCode"];
-	$instName = getInstitutionName($instCode);
+	$instName = $izSettings[$instCode]['name'];
 	
 	$usrId = $_GET["usrId"];
 	$itemId = preg_replace("/[^0-9]/", "", $_GET["itemId"]); // Strips accidental non-numeric characters from itemId
