@@ -1,54 +1,49 @@
 <?php
-	
-	require 'utils/utils.php';
-	
-	// Loads variables from form
-	$apiKey = "null"; // ADD API KEY INFO
-	$instCode = $_POST["instCode"];
-	$usrId = $_POST["usrId"];
-	$itemId = preg_replace("/[^0-9]/", "", $_POST["itemId"]); // Strips accidental non-numeric characters from itemId
-	$mmsId = preg_replace("/[^0-9]/", "", $_POST["mmsId"]); // Strips accidental non-numeric characters from mmsId
-	$aTitle = $_POST["aTitle"];
-	$aAuthor = $_POST["aAuthor"];
-	$start = $_POST["start"];
-	$end = $_POST["end"];
-	$regionalURL = $_POST["regionalURL"];
-	
-	$requestArray = array (
-	'user_primary_id' => $usrId,
-	'request_id' => '',
-	'request_type' => 'DIGITIZATION',
-	'request_sub_type' => 
-	array (
-    'desc' => 'Digitization Request',
-    'value' => 'PATRON_DIGITIZATION',
-	),
-	'item_id' => $itemId,
-	'target_destination' => 
-	array (
-    'desc' => 'string',
-    'value' => 'DIGI_DEPT_INST',
-	),
-	'partial_digitization' => true,
-	'chapter_or_article_title' => $aTitle,
-	'chapter_or_article_author' =>$aAuthor,
-	'required_pages_range' => 
-	array (
-    0 => 
-    array (
-	'from_page' => $start,
-	'to_page' => $end,
-    ),
-	),
-	'copyrights_declaration_signed_by_patron' => true,
-	);
-	$requestJSON = json_encode($requestArray);
-	
-	$fetch_url = $regionalURL . "almaws/v1/users/" . $usrId . "/requests?apiKey=" . $apiKey . "&mms_id=" . $mmsId . "&item_pid=" . $itemId;
-	
-	
-	$apiResponse = apiPost($apiKey,$fetch_url,$requestJSON);
-	$responseArray = json_decode($apiResponse, true);
+    require_once 'utils/config.php';
+    require_once 'utils/utils.php';
+
+    // Loads variables from form
+    $apiKey = $izSettings[$instCode]['apikey'];
+    $instCode = $_POST["instCode"];
+    $usrId = $_POST["usrId"];
+    $itemId = preg_replace("/[^0-9]/", "", $_POST["itemId"]); // Strips accidental non-numeric characters from itemId
+    $mmsId = preg_replace("/[^0-9]/", "", $_POST["mmsId"]); // Strips accidental non-numeric characters from mmsId
+    $aTitle = $_POST["aTitle"];
+    $aAuthor = $_POST["aAuthor"];
+    $start = $_POST["start"];
+    $end = $_POST["end"];
+    $regionalURL = $_POST["regionalURL"];
+
+    $requestArray = array (
+        'user_primary_id' => $usrId,
+        'request_id' => '',
+        'request_type' => 'DIGITIZATION',
+        'request_sub_type' => array (
+            'desc' => 'Digitization Request',
+            'value' => 'PATRON_DIGITIZATION',
+        ),
+        'item_id' => $itemId,
+        'target_destination' => array (
+            'desc' => 'string',
+            'value' => 'DIGI_DEPT_INST',
+        ),
+        'partial_digitization' => true,
+        'chapter_or_article_title' => $aTitle,
+        'chapter_or_article_author' =>$aAuthor,
+        'required_pages_range' => array (
+            0 => array (
+                'from_page' => $start,
+                'to_page' => $end,
+            ),
+        ),
+        'copyrights_declaration_signed_by_patron' => true,
+    );
+    $requestJSON = json_encode($requestArray);
+
+    $fetch_url = $regionalURL . "almaws/v1/users/" . $usrId . "/requests?apiKey=" . $apiKey . "&mms_id=" . $mmsId . "&item_pid=" . $itemId;
+
+    $apiResponse = apiPost($apiKey,$fetch_url,$requestJSON);
+    $responseArray = json_decode($apiResponse, true);
 ?>
 
 <html>

@@ -13,16 +13,16 @@
 		<Setting name="AutoSearch" value="false" type="boolean">
 			<Description>Determines whether or not the search should be done automatically when the request is opened.</Description>
 		</Setting>
-		<Setting name="InstitutionCode" value="01WRLC_CAA" type="string">
+		<Setting name="InstitutionCode" value="01WRLC_DOC" type="string">
 			<Description>Institution Code for Alma.</Description>
 		</Setting>
 		<Setting name="regionalURL" value="https://api-na.hosted.exlibrisgroup.com/" type="string">
 			<Description>Alma API Regional URL.  Sourced from table: https://developers.exlibrisgroup.com/alma/apis/#calling</Description>
 		</Setting>
-		<Setting name="SubmissionURL" value="http://34.232.177.134/index.php?" type="string">
+		<Setting name="SubmissionURL" value="https://illiad-ada.wrlc.org/index.php?" type="string">
 			<Description>URL for website to handle request submissions (see web setup instructions)</Description>
 		</Setting>
-		<Setting name="UserId" value="20530000485427" type="string">
+		<Setting name="UserId" value="TestDCILLAddon" type="string">
 			<Description>Alma Primary ID for ILL lending patron in Alma (the patron which will receive all of the requests).</Description>
 		</Setting>
 	</Settings>
