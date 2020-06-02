@@ -2,6 +2,18 @@
     require_once 'utils/config.php';
     require_once 'utils/utils.php';
 
+    // check shared secret credential
+    $illiadCS = $_POST["illiadCS"];
+    if (isset($_POST["illiadCS"])) {
+        if (ILLIAD_CLIENT_SECRET != $_GET["illiadCS"]) {
+            http_response_code(403);
+            exit;
+        }
+    } else {
+        http_response_code(400);
+        exit;
+    }
+
     // Loads variables from form
     $apiKey = $izSettings[$instCode]['apikey'];
     $instCode = $_POST["instCode"];
@@ -50,7 +62,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Scan Request Submitting</title>
-		<script src="/utils/utils.js"></script>
+		<script src="utils/utils.js"></script>
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<link rel="stylesheet" href="default.css">	
