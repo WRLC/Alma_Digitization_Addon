@@ -3,9 +3,8 @@
     require_once 'utils/utils.php';
 
     // check shared secret credential
-    $illiadCS = $_POST["illiadCS"];
     if (isset($_POST["illiadCS"])) {
-        if (ILLIAD_CLIENT_SECRET != $_GET["illiadCS"]) {
+        if (ILLIAD_CLIENT_SECRET != $_POST["illiadCS"]) {
             http_response_code(403);
             exit;
         }
