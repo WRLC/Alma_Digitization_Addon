@@ -2,18 +2,29 @@
 	require_once 'utils/config.php';
 	require_once 'utils/utils.php';
 
+    if (isset($_GET["illiadCS"])) {
+        if (ILLIAD_CLIENT_SECRET != $_GET["illiadCS"]) {
+            http_response_code(403);
+            exit;
+        }
+    } else {
+        http_response_code(400);
+        exit;
+    }
+
     if (isset($_GET["instCode"])) {
         $instCode = $_GET["instCode"];
         $instName = $izSettings[$instCode]['name'];
     } else {
-        $instCode = '';
-        $instName = '';
+        http_response_code(400);
+        exit;
     }
 
     if (isset($_GET["usrId"])) {
         $usrId = $_GET["usrId"];
     } else {
-        $usrId = '';
+        http_response_code(400);
+        exit;
     }
     if (isset($_GET["itemId"])) {
         // Strips accidental non-numeric characters from itemId
@@ -56,7 +67,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Scan Request Submitting</title>
-		<script src="/utils/utils.js"></script>
+		<script src="utils/utils.js"></script>
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -125,6 +136,7 @@
 					<br><br>
 
 					<input id="regionalURL" name="regionalURL" type="hidden" value="<?php echo $regionalURL ?>">
+					<input id="illiadCS" name="illiadCS" type="hidden" value="<?php echo $illiadCS ?>">
 				<button id="send">Submit Request</button>
 
 			</form>

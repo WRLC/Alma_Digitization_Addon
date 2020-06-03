@@ -13,7 +13,7 @@
 		<Setting name="AutoSearch" value="false" type="boolean">
 			<Description>Determines whether or not the search should be done automatically when the request is opened.</Description>
 		</Setting>
-		<Setting name="InstitutionCode" value="01WRLC_DOC" type="string">
+		<Setting name="InstitutionCode" value="01WRLC_IZC" type="string">
 			<Description>Institution Code for Alma.</Description>
 		</Setting>
 		<Setting name="regionalURL" value="https://api-na.hosted.exlibrisgroup.com/" type="string">
@@ -24,6 +24,9 @@
 		</Setting>
 		<Setting name="UserId" value="TestDCILLAddon" type="string">
 			<Description>Alma Primary ID for ILL lending patron in Alma (the patron which will receive all of the requests).</Description>
+		</Setting>
+		<Setting name="IlliadClientSecret" value="sharedsecretwithwebserver" type="string">
+			<Description>Credential for posting form to web server; keep this secret.</Description>
 		</Setting>
 	</Settings>
 	<Files>
