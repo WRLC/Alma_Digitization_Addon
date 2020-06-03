@@ -22,7 +22,7 @@
 		<Setting name="SubmissionURL" value="https://illiad-ada.wrlc.org/index.php?" type="string">
 			<Description>URL for website to handle request submissions (see web setup instructions)</Description>
 		</Setting>
-		<Setting name="UserId" value="TestDCILLAddon" type="string">
+		<Setting name="UserId" value="IllUserPrimaryId" type="string">
 			<Description>Alma Primary ID for ILL lending patron in Alma (the patron which will receive all of the requests).</Description>
 		</Setting>
 		<Setting name="IlliadClientSecret" value="sharedsecretwithwebserver" type="string">
