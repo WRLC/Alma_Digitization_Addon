@@ -136,7 +136,7 @@
 					<br><br>
 
 					<input id="regionalURL" name="regionalURL" type="hidden" value="<?php echo $regionalURL ?>">
-					<input id="illiadCS" name="illiadCS" type="hidden" value="<?php echo $illiadCS ?>">
+					<input id="illiadCS" name="illiadCS" type="hidden" value="<?php echo ILLIAD_CLIENT_SECRET ?>">
 				<button id="send">Submit Request</button>
 
 			</form>
