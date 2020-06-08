@@ -1,6 +1,5 @@
 <?php
 	require_once 'utils/config.php';
-	require_once 'utils/utils.php';
 
     if (isset($_GET["illiadCS"])) {
         if (ILLIAD_CLIENT_SECRET != $_GET["illiadCS"]) {
