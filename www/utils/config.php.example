@@ -1,7 +1,7 @@
 <?php
 // debug/error logging goes to web server error.log
-#define('DEBUG_LOG', false);
-define('DEBUG_LOG', true);
+define('DEBUG_LOG', false);
+#define('DEBUG_LOG', true);
 
 // settings for each Institution Zone
 $izSettings = array (

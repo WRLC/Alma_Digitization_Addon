@@ -76,7 +76,7 @@
     list ($code, $apiResponse) = sendCurlRequest( $curl, $requestJSON );
     DEBUG_LOG? error_log( "ADDON DEBUG: RESPONSE - $code\n$apiResponse" ) : true;
 
-    // Close OAUTH cURL session
+    // Close cURL session
     curl_close($curl);
 
     if ($code == 200) {
@@ -116,8 +116,8 @@
             }
         } else {
             list ($err, $msg) = jsonError( json_last_error() );
-            error_log( "ADDON ERROR: API response $code\n$apiResponse" );
             error_log( "ADDON ERROR: JSON error $err $msg" );
+            error_log( "ADDON ERROR: API response $code\n$apiResponse" );
             $error_rpt .= "check web error log for messages\n";
         }
         $error_rpt .= "**********************************************************";
