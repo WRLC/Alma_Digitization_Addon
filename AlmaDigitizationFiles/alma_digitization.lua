@@ -32,7 +32,7 @@ function Init()
 		
 		DigitizationForm.RibbonPage = DigitizationForm.Form:GetRibbonPage("Digitization");
 		
-		DigitizationForm.RibbonPage:CreateButton("Load Request Page", GetClientImage("Forward32"), "LoadRequestPage", "Digitization");
+		DigitizationForm.RibbonPage:CreateButton("Load Request Page", GetClientImage("Search32"), "LoadRequestPage", "Digitization");
 		
 		DigitizationForm.Form:Show();
 		
