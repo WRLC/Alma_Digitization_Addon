@@ -11,6 +11,8 @@ settings.SubmissionURL = GetSetting("SubmissionURL");
 settings.InstitutionCode = GetSetting("InstitutionCode");
 settings.UserId = GetSetting("UserId");
 settings.regionalURL = GetSetting("RegionalURL");
+settings.IlliadClientSecret = GetSetting("IlliadClientSecret");
+
 local interfaceMngr = nil;
 local DigitizationForm = {};
 DigitizationForm.Form = nil;
@@ -23,16 +25,16 @@ function Init()
 		
 		interfaceMngr = GetInterfaceManager();
 		
-		DigitizationForm.Form = interfaceMngr:CreateForm("Digitization", "Script");
-		DigitizationForm.Browser = DigitizationForm.Form:CreateBrowser("Digitization", "Digitization", "Digitization");
+		DigitizationForm.Form = interfaceMngr:CreateForm("WRLC Digitization", "Script");
+		DigitizationForm.Browser = DigitizationForm.Form:CreateBrowser("WRLC Digitization", "WRLC Digitization", "WRLC Digitization");
 		
 		DigitizationForm.Browser.TextVisible = false;
 		
 		DigitizationForm.Browser.WebBrowser.ScriptErrorsSuppressed = true;
 		
-		DigitizationForm.RibbonPage = DigitizationForm.Form:GetRibbonPage("Digitization");
+		DigitizationForm.RibbonPage = DigitizationForm.Form:GetRibbonPage("WRLC Digitization");
 		
-		DigitizationForm.RibbonPage:CreateButton("Load Request Page", GetClientImage("Forward32"), "LoadRequestPage", "Digitization");
+		DigitizationForm.RibbonPage:CreateButton("Load Request Page", GetClientImage("Search32"), "LoadRequestPage", "WRLC Digitization");
 		
 		DigitizationForm.Form:Show();
 		
