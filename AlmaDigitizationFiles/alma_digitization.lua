@@ -11,6 +11,8 @@ settings.SubmissionURL = GetSetting("SubmissionURL");
 settings.InstitutionCode = GetSetting("InstitutionCode");
 settings.UserId = GetSetting("UserId");
 settings.regionalURL = GetSetting("RegionalURL");
+settings.IlliadClientSecret = GetSetting("IlliadClientSecret");
+
 local interfaceMngr = nil;
 local DigitizationForm = {};
 DigitizationForm.Form = nil;
