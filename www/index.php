@@ -124,6 +124,8 @@
 					<span class="error" id="aAuthorValidation"></span>
 					<br><br>
 
+                    <small><em>use 0 - 0 for unknown page range</em></small><br/>
+
 					<label for="start">Start Page:</label>
 					<input type="text" id="start" name="start" value="" class="text ui-widget-content ui-corner-all">
 					<span class="error" id="startValidation"></span>
