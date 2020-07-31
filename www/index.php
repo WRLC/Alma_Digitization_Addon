@@ -25,6 +25,11 @@
         http_response_code(400);
         exit;
     }
+    if (isset($_GET["tn"])) {
+        $tn = $_GET["tn"];
+    } else {
+        $tn = '';
+    }
     if (isset($_GET["itemId"])) {
         // Strips accidental non-numeric characters from itemId
         $itemId = preg_replace("/[^0-9]/", "", $_GET["itemId"]);
@@ -102,6 +107,10 @@
 					<label for="usrId">User ID:</label>
 					<input type="text" id="usrId" name="usrId" class="text ui-widget-content ui-corner-all" value="<?php echo $usrId; ?>" readonly>
 					<span class="error" id="usrIdValidation"></span>
+					<br><br>
+
+					<label for="tn">ILLiad TN:</label>
+					<input type="text" id="tn" name="tn" value="<?php echo $tn; ?>" class="text ui-widget-content ui-corner-all">
 					<br><br>
 
 					<label for="itemId">Item ID:</label>
