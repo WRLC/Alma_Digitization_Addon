@@ -23,15 +23,19 @@
     $aAuthor = $_POST["aAuthor"];
     $start = $_POST["start"];
     $end = $_POST["end"];
-    $comment = '';
+    $tn = $_POST["tn"];
+    if ($tn == '') {
+        $tn = 'unknown';
+    }
+    $comment = "ILLiad TN: $tn; ";
     $regionalURL = $_POST["regionalURL"];
 
     // Page number validation
     if ($start == 0 AND $end == 0) {
-        $comment = 'Page range is unknown';
+        $comment .= 'Page range is unknown; ';
         $start = 1; $end = 1;
     } else if ($start == 0 OR $end == 0 OR $start > $end) {
-        $comment = "Original request had invalid page range: $start - $end";
+        $comment .= "Original request had invalid page range: $start - $end; ";
         $start = 1; $end = 1;
     }
 
@@ -173,6 +177,10 @@
 					
 					<label for="aAuthor">Chapter Author:</label>
 					<input type="text" id="aAuthor" name="aAuthor" value="<?php echo $responseArray["chapter_or_article_author"]; ?>" class="text ui-widget-content ui-corner-all" readonly>
+					<br><br>
+					
+					<label for="comment">Comment:</label>
+					<input type="text" id="comment" name="comment" value="<?php echo $responseArray["comment"]; ?>" class="text ui-widget-content ui-corner-all" readonly>
 					<br><br>
 			</form>
 		</div>

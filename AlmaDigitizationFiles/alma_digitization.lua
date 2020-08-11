@@ -54,13 +54,14 @@ function LoadRequestPage()
 	usrId = "&usrId=" .. settings.UserId;
 	illiadCS = "&illiadCS=" .. settings.IlliadClientSecret;
 	regionalURL = "&regionalURL=" .. settings.regionalURL;
+	tn = ("&tn=" .. GetFieldValue("Transaction", "TransactionNumber")) or "&tn="
 	itemId = ("&itemId=" .. GetFieldValue("Transaction", "ReferenceNumber")) or "&itemId="
 	mmsId = ("&mmsId=" .. GetFieldValue("Transaction", "CallNumber")) or "&mmsId="
 	aTitle = ("&aTitle=" .. GetFieldValue("Transaction", "PhotoArticleTitle")) or "&aTitle='unknown'"
 	aAuthor = ("&aAuthor=" .. GetFieldValue("Transaction", "PhotoArticleAuthor")) or "&aAuthor='unknown'"
 	pageRange = ("&pageRange=" .. GetFieldValue("Transaction", "PhotoJournalInclusivePages")) or "&pageRange='0-0'"
 	
-	url = "" .. settings.SubmissionURL .. instCode .. usrId .. illiadCS .. itemId .. mmsId .. aTitle .. aAuthor .. pageRange .. regionalURL;
+	url = "" .. settings.SubmissionURL .. instCode .. usrId .. illiadCS .. tn .. itemId .. mmsId .. aTitle .. aAuthor .. pageRange .. regionalURL;
 	
 	DigitizationForm.Browser:Navigate(url);
 	

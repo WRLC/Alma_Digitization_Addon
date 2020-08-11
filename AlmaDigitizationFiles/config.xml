@@ -17,7 +17,7 @@
 			<Description>Institution Code for Alma.</Description>
 		</Setting>
 		<Setting name="regionalURL" value="https://api-na.hosted.exlibrisgroup.com/" type="string">
-			<Description>Alma API Regional URL.  Sourced from table: https://developers.exlibrisgroup.com/alma/apis/#calling</Description>
+			<Description>Alma API Regional URL (optional).  Sourced from table: https://developers.exlibrisgroup.com/alma/apis/#calling</Description>
 		</Setting>
 		<Setting name="SubmissionURL" value="https://illiad-ada.wrlc.org/index.php?" type="string">
 			<Description>URL for website to handle request submissions (see web setup instructions)</Description>
