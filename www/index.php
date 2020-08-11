@@ -111,6 +111,7 @@
 
 					<label for="tn">ILLiad TN:</label>
 					<input type="text" id="tn" name="tn" value="<?php echo $tn; ?>" class="text ui-widget-content ui-corner-all">
+					<span class="error" id="usrIdValidation"></span>
 					<br><br>
 
 					<label for="itemId">Item ID:</label>
