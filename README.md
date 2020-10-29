@@ -11,7 +11,7 @@ General instructions for Installing Addons are here:
 https://atlas-sys.atlassian.net/wiki/spaces/ILLiadAddons/pages/3149384/Installing+Addons
 
 ### Download
-Copy the AlmaDigitizationFiles folder from this repo to the ILLiad addons folder: C:\program files\illiad\addons
+Copy the [AlmaDigitizationFiles folder](https://github.com/WRLC/Alma_Digitization_Addon/tree/master/AlmaDigitizationFiles) from this repo to the ILLiad addons folder: C:\program files\illiad\addons
 
 ### Configuration
 Addon settings are configured in the ILLiad Client Manage Addons form.
