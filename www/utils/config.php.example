@@ -7,7 +7,9 @@ define('DEBUG_LOG', false);
 $izSettings = array (
     # indexed by Alma Institution Code
     '01WRLC_EXONE' => array (
+        # for display on Web form
         'name' => 'Example University One',
+        # Alma API Key with Users read/write permission
         'apikey' => 'l8xx0123456789abcdeffedcba9876543210',
     ),
     '01WRLC_EXTWO' => array (
