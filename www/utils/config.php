@@ -1,5 +1,5 @@
 <?php
-// debug/error logging goes to web server error.log. Test
+// debug/error logging goes to web server error.log
 #define('DEBUG_LOG', false);
 define('DEBUG_LOG', true);
 
