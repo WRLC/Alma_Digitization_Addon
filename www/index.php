@@ -1,6 +1,6 @@
 <?php
 	require_once 'utils/config.php';
-
+// Azure update
     if (isset($_GET["illiadCS"])) {
         if (ILLIAD_CLIENT_SECRET != $_GET["illiadCS"]) {
             http_response_code(403);
