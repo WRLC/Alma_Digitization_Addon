@@ -1,4 +1,4 @@
-<!--- <?php
+<?php
 	require_once 'utils/config.php';
 
     if (isset($_GET["illiadCS"])) {
@@ -66,7 +66,7 @@
     } else {
         $regionalURL = $apiSettings["defaultURL"];
     }
-?> --->
+?>
 <html>
 	<head>
 		<meta charset="utf-8">
