@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: php-app
-          path: www
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
@@ -59,3 +59,4 @@ jobs:
           package: .
 
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CB6A146D57434D77BA249AA5200EC351 }}
+
