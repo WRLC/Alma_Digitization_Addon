@@ -90,6 +90,7 @@
 	<body>
 
 		<div class="widget" id="form" width="100%">
+			<!--- Azure --->
 			<form method="POST" name="htmlForm" action="submitRequest.php" onsubmit="return validateForm()" id="requestForm">
 
 					<legend id="requestFormHeader" class="ui-widget-header">Request Form</legend>
@@ -161,3 +162,4 @@
 		<div id="contentHolder"></div>
 	</body>
 </html>	
+
