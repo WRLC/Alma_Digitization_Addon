@@ -164,25 +164,26 @@
 					<br>
 					
 					<label for="reqId">Request ID:</label>
-					<input type="text" id="reqId" name="reqId" value="<?php echo $responseArray["request_id"]; ?>" class="text ui-widget-content ui-corner-all" readonly>
+					<input type="text" id="reqId" name="reqId" value="<?php echo $responseArray["request_id"] ?? ''; ?>" class="text ui-widget-content ui-corner-all" readonly>
 					<br><br>
 					
 					<label for="bTitle">Book Title:</label>
-					<input type="text" id="bTitle" name="bTitle" value="<?php echo $responseArray["title"]; ?>" class="text ui-widget-content ui-corner-all" readonly>
+					<input type="text" id="bTitle" name="bTitle" value="<?php echo $responseArray["title"] ?? ''; ?>" class="text ui-widget-content ui-corner-all" readonly>
 					<br><br>
 					
 					<label for="aTitle">Chapter Title:</label>
-					<input type="text" id="aTitle" name="aTitle" value="<?php echo $responseArray["chapter_or_article_title"]; ?>" class="text ui-widget-content ui-corner-all" readonly>
+					<input type="text" id="aTitle" name="aTitle" value="<?php echo $responseArray["chapter_or_article_title"] ?? ''; ?>" class="text ui-widget-content ui-corner-all" readonly>
 					<br><br>
 					
 					<label for="aAuthor">Chapter Author:</label>
-					<input type="text" id="aAuthor" name="aAuthor" value="<?php echo $responseArray["chapter_or_article_author"]; ?>" class="text ui-widget-content ui-corner-all" readonly>
+					<input type="text" id="aAuthor" name="aAuthor" value="<?php echo $responseArray["chapter_or_article_author"] ?? ''; ?>" class="text ui-widget-content ui-corner-all" readonly>
 					<br><br>
 					
 					<label for="comment">Comment:</label>
-					<input type="text" id="comment" name="comment" value="<?php echo $responseArray["comment"]; ?>" class="text ui-widget-content ui-corner-all" readonly>
+					<input type="text" id="comment" name="comment" value="<?php echo $responseArray["comment"] ?? ''; ?>" class="text ui-widget-content ui-corner-all" readonly>
 					<br><br>
 			</form>
 		</div>
 	</body>
 </html>
+
