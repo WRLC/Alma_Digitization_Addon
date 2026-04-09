@@ -1,43 +1,63 @@
 <?php
-	require_once 'utils/config.php';
-// Azure update
-    if (isset($_GET["illiadCS"])) {
-        if (ILLIAD_CLIENT_SECRET != $_GET["illiadCS"]) {
-            http_response_code(403);
-            exit;
-        }
-    } else {
+    require_once 'utils/config.php';
+
+    $illiadCS = $_GET["illiadCS"] ?? null;
+    $instCode = $_GET["instCode"] ?? null;
+    $usrId    = $_GET["usrId"] ?? null;
+
+    // Allow Azure warm-up probes / root hits without generating noisy 400s
+    if ($illiadCS === null && $instCode === null && $usrId === null) {
+        http_response_code(200);
+        header('Content-Type: text/plain; charset=utf-8');
+        echo "Alma Digitization Addon endpoint is online.\n";
+        exit;
+    }
+
+    if ($illiadCS === null) {
+        error_log("ADDON REJECT: missing illiadCS on " . ($_SERVER['REQUEST_URI'] ?? ''));
         http_response_code(400);
         exit;
     }
 
-    if (isset($_GET["instCode"])) {
-        $instCode = $_GET["instCode"];
-        $instName = $izSettings[$instCode]['name'];
-    } else {
+    if (ILLIAD_CLIENT_SECRET != $illiadCS) {
+        error_log("ADDON REJECT: invalid illiadCS on " . ($_SERVER['REQUEST_URI'] ?? ''));
+        http_response_code(403);
+        exit;
+    }
+
+    if ($instCode === null) {
+        error_log("ADDON REJECT: missing instCode on " . ($_SERVER['REQUEST_URI'] ?? ''));
         http_response_code(400);
         exit;
     }
 
-    if (isset($_GET["usrId"])) {
-        $usrId = $_GET["usrId"];
-    } else {
+    if (!isset($izSettings[$instCode])) {
+        error_log("ADDON REJECT: invalid instCode '$instCode'");
         http_response_code(400);
         exit;
     }
+
+    $instName = $izSettings[$instCode]['name'];
+
+    if ($usrId === null) {
+        error_log("ADDON REJECT: missing usrId on " . ($_SERVER['REQUEST_URI'] ?? ''));
+        http_response_code(400);
+        exit;
+    }
+
     if (isset($_GET["tn"])) {
         $tn = $_GET["tn"];
     } else {
         $tn = '';
     }
+
     if (isset($_GET["itemId"])) {
-        // Strips accidental non-numeric characters from itemId
         $itemId = preg_replace("/[^0-9]/", "", $_GET["itemId"]);
     } else {
         $itemId = '';
     }
+
     if (isset($_GET["mmsId"])) {
-        // Strips accidental non-numeric characters from mmsId
         $mmsId = preg_replace("/[^0-9]/", "", $_GET["mmsId"]);
     } else {
         $mmsId = '';
@@ -48,6 +68,7 @@
     } else {
         $aTitle = '';
     }
+
     if (isset($_GET["aAuthor"])) {
         $aAuthor = $_GET["aAuthor"];
     } else {
@@ -55,7 +76,6 @@
     }
 
     if (isset($_GET["pageRange"])) {
-        //TODO: Implement Validation for Page Range Splitting
         $pageRange = $_GET["pageRange"];
     } else {
         $pageRange = '';
