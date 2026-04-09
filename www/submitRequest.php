@@ -2,33 +2,69 @@
     require_once 'utils/config.php';
     require_once 'utils/jsonapi.php';
 
+    if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
+        http_response_code(405);
+        header('Allow: POST');
+        exit;
+    }
+
     // check shared secret credential
-    if (isset($_POST["illiadCS"])) {
-        if (ILLIAD_CLIENT_SECRET != $_POST["illiadCS"]) {
-            http_response_code(403);
-            exit;
-        }
-    } else {
+    $illiadCS = $_POST["illiadCS"] ?? null;
+    if ($illiadCS === null) {
+        error_log("ADDON REJECT: missing illiadCS on submit");
         http_response_code(400);
         exit;
     }
 
+    if (ILLIAD_CLIENT_SECRET != $illiadCS) {
+        error_log("ADDON REJECT: invalid illiadCS on submit");
+        http_response_code(403);
+        exit;
+    }
+
     // Loads variables from form
-    $instCode = $_POST["instCode"];
+    $instCode = $_POST["instCode"] ?? null;
+    if ($instCode === null || !isset($izSettings[$instCode])) {
+        error_log("ADDON REJECT: invalid or missing instCode on submit");
+        http_response_code(400);
+        exit;
+    }
+
     $apiKey = $izSettings[$instCode]['apikey'];
-    $usrId = $_POST["usrId"];
-    $itemId = preg_replace("/[^0-9]/", "", $_POST["itemId"]); // Strips accidental non-numeric characters from itemId
-    $mmsId = preg_replace("/[^0-9]/", "", $_POST["mmsId"]); // Strips accidental non-numeric characters from mmsId
-    $aTitle = $_POST["aTitle"];
-    $aAuthor = $_POST["aAuthor"];
-    $start = $_POST["start"];
-    $end = $_POST["end"];
-    $tn = $_POST["tn"];
+
+    $usrId = $_POST["usrId"] ?? null;
+    if ($usrId === null || $usrId === '') {
+        error_log("ADDON REJECT: missing usrId on submit");
+        http_response_code(400);
+        exit;
+    }
+
+    $itemId = preg_replace("/[^0-9]/", "", $_POST["itemId"] ?? "");
+    $mmsId = preg_replace("/[^0-9]/", "", $_POST["mmsId"] ?? "");
+    $aTitle = $_POST["aTitle"] ?? '';
+    $aAuthor = $_POST["aAuthor"] ?? '';
+    $start = $_POST["start"] ?? '';
+    $end = $_POST["end"] ?? '';
+    $tn = $_POST["tn"] ?? '';
+
+    if ($itemId === '' || $mmsId === '') {
+        error_log("ADDON REJECT: missing itemId or mmsId on submit");
+        http_response_code(400);
+        exit;
+    }
+
+    if ($start === '' || $end === '') {
+        error_log("ADDON REJECT: missing start or end page on submit");
+        http_response_code(400);
+        exit;
+    }
+
     if ($tn == '') {
         $tn = 'unknown';
     }
     $comment = "ILLiad TN: $tn; ";
-    $regionalURL = $_POST["regionalURL"];
+
+    $regionalURL = $_POST["regionalURL"] ?? $apiSettings["defaultURL"];
 
     // Page number validation
     if ($start == 0 AND $end == 0) {
